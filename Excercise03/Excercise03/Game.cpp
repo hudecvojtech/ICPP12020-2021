@@ -1,7 +1,6 @@
 #include "Game.h"
 #include "StaticObject.h"
 #include <math.h>
-#include <iostream>
 
 void Game::InsertObject(Object* o)
 {
