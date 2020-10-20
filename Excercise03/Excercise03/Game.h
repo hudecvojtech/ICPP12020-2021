@@ -3,17 +3,20 @@
 #include "Object.h"
 #include "MovableObject.h"
 
-class Game {
-	Object** objects = new Object*[10];
-	int* arrayOfIds = new int[100];
-	MovableObject** arrayOfMovableItems = new MovableObject*[100];
-	MovableObject** arrayOfMovableItemsWithRotation = new MovableObject*[100];
+#define ARRAY_SIZE 100
 
-	int arrayCounter = 0;
-	int staticObjectsCounter = 0;
-	int movableObjectsCounter = 0;
-	int movableObjectsWithRotationCounter = 0;
+class Game {
+	Object** objects;
+	int* arrayOfIds;
+	MovableObject** arrayOfMovableItems;
+	MovableObject** arrayOfMovableItemsWithRotation;
+
+	int arrayCounter;
+	int staticObjectsCounter;
+	int movableObjectsCounter;
+	int movableObjectsWithRotationCounter;
 public:
+	Game();
 	~Game();
 	void InsertObject(Object* o);
 	int* FindIdsOfStaticObjects(double xmin, double xmax, double ymin, double ymax);

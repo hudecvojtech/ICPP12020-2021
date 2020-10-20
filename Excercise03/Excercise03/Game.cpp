@@ -2,16 +2,31 @@
 #include "StaticObject.h"
 #include <math.h>
 
+Game::Game()
+{
+	objects = new Object* [ARRAY_SIZE];
+	arrayOfIds = nullptr;
+	arrayOfMovableItems = nullptr;
+	arrayOfMovableItemsWithRotation = nullptr;
+
+	arrayCounter = 0;
+	staticObjectsCounter = 0;
+	movableObjectsCounter = 0;
+	movableObjectsWithRotationCounter = 0;
+}
+
 void Game::InsertObject(Object* o)
 {
-	if (arrayCounter < 10) {
+	if (arrayCounter >= ARRAY_SIZE)
+		throw "Not enough space in array.";
+
 		objects[arrayCounter++] = o;
-	}
 }
 
 int* Game::FindIdsOfStaticObjects(double xmin, double xmax, double ymin, double ymax)
 {
 	staticObjectsCounter = 0;
+	arrayOfIds = new int[arrayCounter];
 	for (int i = 0; i < arrayCounter; i++) {
 		if (dynamic_cast<StaticObject*>(objects[i]) == nullptr)
 			continue;
@@ -28,7 +43,7 @@ int* Game::FindIdsOfStaticObjects(double xmin, double xmax, double ymin, double 
 MovableObject** Game::FindMovableObjectsInArea(double x, double y, double r)
 {
 	movableObjectsCounter = 0;
-	
+	arrayOfMovableItems = new MovableObject* [arrayCounter];
 	for (int i = 0; i < arrayCounter; i++) {
 		if (dynamic_cast<MovableObject*>(objects[i]) == nullptr)
 			continue;
@@ -45,6 +60,7 @@ MovableObject** Game::FindMovableObjectsInArea(double x, double y, double r, dou
 {
 	movableObjectsWithRotationCounter = 0;
 	MovableObject** arrayInDimensions = FindMovableObjectsInArea(x, y, r);
+	arrayOfMovableItemsWithRotation = new MovableObject* [arrayCounter];
 
 	for (int i = 0; i < GetMovableObjectsCounter(); i++) {
 		if (arrayInDimensions[i]->GetRotationAngle() < umax && arrayInDimensions[i]->GetRotationAngle() > umin) {
