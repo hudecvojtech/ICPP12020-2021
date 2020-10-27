@@ -1,12 +1,11 @@
 #ifndef ICOMPARABLE_H
 #define ICOMPARABLE_H
-#include <string>
+#include "IObject.h"
 
-class IComparable {
+class IComparable : public IObject {
 public:
 	virtual int CompareTo(IComparable* obj) const = 0;
-	virtual std::string ToString() const;
-	~IComparable() { };
+	virtual ~IComparable() {};
 };
 
 #endif // !ICOMPARABLE_H

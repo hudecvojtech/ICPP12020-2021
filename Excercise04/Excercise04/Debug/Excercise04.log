@@ -1,0 +1,5 @@
+﻿  Source.cpp
+C:\Users\vojta\OneDrive\Plocha\cpp\ICPP12020-2021\Excercise04\Excercise04\Source.cpp(23,12): warning C4244: argument: time_t se převádí na unsigned int; může dojít ke ztrátě dat.
+  Time.cpp
+  Generování kódu...
+  Excercise04.vcxproj -> C:\Users\vojta\OneDrive\Plocha\cpp\ICPP12020-2021\Excercise04\Debug\Excercise04.exe

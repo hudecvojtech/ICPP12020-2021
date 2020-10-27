@@ -4,7 +4,7 @@
 #include <string>
 
 
-class Time : virtual public IComparable {
+class Time : public IComparable {
 private:
 	int _hour;
 	int _min;
@@ -13,7 +13,7 @@ private:
 public:
 	Time(int hour, int min, int sec);
 	int CompareTo(IComparable* obj) const;
-	virtual std::string ToString() const;
+	std::string ToString() const;
 };
 
 #endif // !TIME_H

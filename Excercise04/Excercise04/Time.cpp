@@ -8,6 +8,9 @@ Time::Time(int hour, int min, int sec)
 }
 
 int Time::CompareTo(IComparable* obj) const {
+	if (obj == nullptr)
+		throw "Null object";
+
 	Time* t = dynamic_cast<Time*>(obj);
 	int result1 = _hour * 3600 + _min * 60 + _sec;
 	int result2 = t->_hour * 3600 + t->_min * 60 + t->_sec;
