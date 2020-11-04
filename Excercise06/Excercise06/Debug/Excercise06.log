@@ -1,0 +1,14 @@
+﻿  Source.cpp
+C:\Users\vojta\source\repos\Excercise06\Excercise06\GrowingContainer.h(68,12): warning C4018: >=: signed/unsigned – neshoda
+C:\Users\vojta\source\repos\Excercise06\Excercise06\GrowingContainer.h(67): message : Při kompilaci členské funkce třída šablona DataType &GrowingContainer<DataType,2,2>::operator [](int)
+          with
+          [
+              DataType=std::string
+          ]
+C:\Users\vojta\source\repos\Excercise06\Excercise06\Source.cpp(13): message : Zobrazit odkaz na kompilované vytváření instancí funkce šablona DataType &GrowingContainer<DataType,2,2>::operator [](int)
+          with
+          [
+              DataType=std::string
+          ]
+C:\Users\vojta\source\repos\Excercise06\Excercise06\Source.cpp(6): message : Zobrazit odkaz na kompilované vytváření instancí funkce třída šablona GrowingContainer<std::string,2,2>
+  Excercise06.vcxproj -> C:\Users\vojta\source\repos\Excercise06\Debug\Excercise06.exe
