@@ -25,14 +25,14 @@ template<typename DataType, int initSize, int growCoeficient>
 GrowingContainer<DataType, initSize, growCoeficient>::GrowingContainer()
 {
 	_arraySize = initSize;
-	_array = new DataType[_arraySize]; // Jak uvolnit pamÏù? po provedenÌ memcpy() a n·slednÈm delete[] spadne
+	_array = new DataType[_arraySize];
 	_countOfElements = 0;
 }
 
 template<typename DataType, int initSize, int growCoeficient>
 GrowingContainer<DataType, initSize, growCoeficient>::~GrowingContainer()
 {
-	//delete[] _array;
+	delete[] _array;
 }
 
 template<typename DataType, int initSize, int growCoeficient>
@@ -47,10 +47,14 @@ void GrowingContainer<DataType, initSize, growCoeficient>::GrowArray()
 	if (isSpaceInArray()) return;
 
 	DataType* newArray = new DataType[_arraySize * growCoeficient];
-	memcpy(newArray, _array, _arraySize * sizeof(DataType));
-	_arraySize *= growCoeficient;
-	//delete[] _array; 
+	
+	for (int i = 0; i < _countOfElements; i++) {
+		newArray[i] = _array[i];
+	}
+
+	delete[] _array; 
 	_array = newArray;
+	_arraySize *= growCoeficient;
 }
 
 template<typename DataType, int initSize, int growCoeficient>
