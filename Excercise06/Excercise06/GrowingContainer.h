@@ -1,6 +1,6 @@
 #ifndef GROWINGCONTAINER_H
 #define GROWINGCONTAINER_H
-#include <exception>
+#include <stdexcept>
 
 template<typename DataType, int initSize = 5, int growCoeficient = 2>
 class GrowingContainer {
@@ -18,8 +18,6 @@ public:
 	unsigned int count() const;
 };
 
-
-#endif // !GROWINGCONTAINER_H
 
 template<typename DataType, int initSize, int growCoeficient>
 GrowingContainer<DataType, initSize, growCoeficient>::GrowingContainer()
@@ -70,7 +68,7 @@ template<typename DataType, int initSize, int growCoeficient>
 DataType& GrowingContainer<DataType, initSize, growCoeficient>::operator[](int index)
 {
 	if (index >= _countOfElements)
-		throw std::exception();
+		throw std::out_of_range("Out of range");
 	return _array[index];
 }
 
@@ -78,7 +76,7 @@ template<typename DataType, int initSize, int growCoeficient>
 DataType GrowingContainer<DataType, initSize, growCoeficient>::operator[](int index) const
 {
 	if (index >= _countOfElements)
-		throw std::exception();
+		throw std::out_of_range("Out of range");
 	return _array[index];
 }
 
@@ -87,3 +85,5 @@ unsigned int GrowingContainer<DataType, initSize, growCoeficient>::count() const
 {
 	return _countOfElements;
 }
+
+#endif // !GROWINGCONTAINER_H

@@ -16,8 +16,8 @@ int main(char** argv, int argc) {
 	try {
 		std::cout << growingContainer[12] << std::endl;
 	}
-	catch (...) {
-		std::cout << "Error" << std::endl;
+	catch (const std::out_of_range& e) {
+		std::cout << e.what() << std::endl;
 	}
 	return 0;
 }
