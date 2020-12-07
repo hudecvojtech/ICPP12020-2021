@@ -76,23 +76,30 @@ void saveBin() {
 	persons[2] = person3;
 
 	std::ofstream wf("output.dat", std::ios::out | std::ios::binary);
-	for (int i = 0; i < 3; i++) {
-		wf.write((char*)&persons[i], sizeof(Person));
+	if (wf.is_open()) {
+		for (int i = 0; i < 3; i++) {
+			wf.write((char*)&persons[i], sizeof(Person));
+		}
+		wf.close();
 	}
-		
-
-	wf.close();
+	
 }
 
 void loadBin() {
-	std::ifstream rf("output.dat", std::ios::out | std::ios::binary);
-	Person persons[3];
-	for (int i = 0; i < 3; i++)
-		rf.read((char*)&persons[i], sizeof(Person));
-	rf.close();
+	std::ifstream rf("output.dat", std::ios::binary);
 
-	for (int i = 0; i < 3; i++)
-		std::cout << persons[i] << std::endl;
+	if (rf.is_open()) {
+		rf.seekg(0, std::ios::end);
+		int numberOfPersons = rf.tellg() / sizeof(Person);
+		rf.seekg(0, std::ios::beg);
+		Person* persons = new Person[numberOfPersons];
+		for (size_t i = 0; i < numberOfPersons; i++) {
+			rf.read((char*)&persons[i], sizeof(Person));
+			std::cout << persons[i] << std::endl;
+		}
+
+		rf.close();
+	}
 	
 }
 

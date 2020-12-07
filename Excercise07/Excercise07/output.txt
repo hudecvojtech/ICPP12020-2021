@@ -1,0 +1,3 @@
+person1 person1 street1 city1 1 1 3 1995
+person2 person2 street2 city2 2 10 9 1984
+person3 person3 street3 city3 3 9 8 1962
