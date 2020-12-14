@@ -17,7 +17,6 @@ public:
 	PipeElement* GetElement(int x, int y) const;
 	bool IsValid() const;
 	int GetSize() const;
-	//friend std::ifstream& operator>>(std::ifstream& input, Conduit& a);
 };
 
 #endif // !CONDUIT_H
